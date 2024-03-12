@@ -17,10 +17,14 @@
 
     <!-- SEO titles & descriptions -->
     <title>
-        {{ if eq $title .Site.Title }}
-            {{ $title }}
+        {{ if .Site.Params.ShowSiteTitle }}
+            {{ if eq $title .Site.Title }}
+                {{ $title }}
+            {{ else }}
+                {{ printf "%s | %s" $title .Site.Title }}
+            {{ end }}
         {{ else }}
-            {{ printf "%s | %s" $title .Site.Title }}
+            {{ $title }}
         {{ end }}
     </title>
     <meta name="description" content="{{ $description }}">
