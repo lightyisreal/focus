@@ -474,10 +474,18 @@ table td {
 .post-content h5 {
   margin-top: 20px;
 }
-.post-content img {
+.post-content img, .post-image img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
+}
+
+.post-image-description {
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+  color: gray;
 }
 
 /* LIST */

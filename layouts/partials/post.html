@@ -11,6 +11,16 @@
             <li class="post-tag"><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
         {{ end }}
         </ul>
+        {{ if (isset .Params "image") }}
+        <div class="post-image">
+            {{ if (isset .Params "image_description") }}
+            <img src="{{ .Params.image }}" alt="{{ .Params.image_description }}">
+            <div class="post-image-description">{{- with .Params.image_description | markdownify }}{{ . }}{{ end -}}</div>
+            {{ else }}
+            <img src="{{ .Params.image }}">
+            {{ end }}
+        </div>
+        {{ end }}
     </div>
 
     <div class="post-content">
