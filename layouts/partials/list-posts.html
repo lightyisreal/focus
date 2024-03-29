@@ -2,7 +2,7 @@
     {{ $id := delimit (shuffle (seq 1 9)) "" }}
     {{ if isset .Params "image" }}
     {{ $imageUrl := path.Join .RelPermalink .Params.image }}
-    {{ if strings.HasPrefix .Params.image "http" }}
+    {{ if or (strings.HasPrefix .Params.image "http") (strings.HasPrefix .Params.image "/") }}
     {{ $imageUrl = .Params.image }}
     {{ end }}
     <a href="{{ .Permalink }}" class="post-title-image" style="background-image: url('{{ $imageUrl }}');" />
