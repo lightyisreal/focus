@@ -11,6 +11,14 @@ html {
   fill: var(--dark-text-color);
 }
 
+.post-title {
+  background-color: var(--dark-secondary-color);
+}
+
+.post-title:hover {
+  background-color: var(--dark-tertiary-color);
+}
+
 .header {
   background-color: rgba(var(--dark-primary-color), 0.95);
 }

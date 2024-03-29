@@ -1,5 +1,18 @@
 <article class="post-title">
-    <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
-    <div class="flex-break"></div>
-    <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}</span>
+    {{ if isset .Params "image" }}
+    {{ $imageUrl := path.Join .RelPermalink .Params.image }}
+    {{ if strings.HasPrefix .Params.image "http" }}
+    {{ $imageUrl = .Params.image }}
+    {{ end }}
+    <a href="{{ .Permalink }}" class="post-title-image" style="background-image: url('{{ $imageUrl }}');" />
+    {{ end }}
+    <div class="post-info">
+        <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
+        <br>
+        <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}</span>
+        <br>
+        {{ with .Description }}
+        <div class="post-description">{{ . }}</div>
+        {{ end }}
+    </div>
 </article>

@@ -498,6 +498,45 @@ table td {
 .list-posts .post-title {
   margin: 18px 0 0 15px;
 }
+.post-title {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  background-color: var(--light-secondary-color);
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.post-title:hover {
+  background-color: var(--light-tertiary-color);
+  color: rgb(var(--light-primary-color));
+  transition: background-color 0.3s ease;
+}
+
+.post-info {
+  width: 70%;
+}
+.post-info .post-link {
+  font-weight: 700;
+  font-size: 20px;
+}
+.post-title-image {
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30%;
+}
+.list-posts .post-date {
+  color: gray;
+}
+.post-description {
+  display: inline-block;
+}
 .list-posts a {
   text-decoration: none;
 }
@@ -605,8 +644,16 @@ table td {
     flex: 1;
   }
 
-  .list-posts .post-date {
-    color: gray;
+  .post-title {
+    display: block;
+  }
+
+  .post-title-image {
+    display: none;
+  }
+
+  .post-info {
+    width: 100%;
   }
 
   .footer {
