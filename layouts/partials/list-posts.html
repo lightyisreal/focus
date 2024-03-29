@@ -1,4 +1,5 @@
 <article class="post-title">
+    {{ $id := delimit (shuffle (seq 1 9)) "" }}
     {{ if isset .Params "image" }}
     {{ $imageUrl := path.Join .RelPermalink .Params.image }}
     {{ if strings.HasPrefix .Params.image "http" }}
@@ -6,7 +7,7 @@
     {{ end }}
     <a href="{{ .Permalink }}" class="post-title-image" style="background-image: url('{{ $imageUrl }}');" />
     {{ end }}
-    <div class="post-info">
+    <div class="post-info" id="{{ $id }}">
         <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
         <br>
         <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}</span>
@@ -15,4 +16,10 @@
         <div class="post-description">{{ . }}</div>
         {{ end }}
     </div>
+    <script>
+        // clicking post-info will redirect to post
+        document.getElementById("{{ $id }}").onclick = function() {
+            window.location.href = "{{ .Permalink }}";
+        };
+    </script>
 </article>
