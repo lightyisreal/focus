@@ -1,0 +1,14 @@
+[Recent]
+  other = 'Recenti'
+[error404]
+  other = 'Questa pagina non esiste, vai'
+[home]
+  other = 'alla pagina principale'
+[nothing]
+  other = 'Nulla da vedere ancora 😉'
+[previous]
+  other = 'Precedente'
+[next]
+  other = 'Successivo'
+[tags]
+  other = 'Tag'
