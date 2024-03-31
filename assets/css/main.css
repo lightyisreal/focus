@@ -209,6 +209,13 @@ a:hover .feather-sun {
   color: black;
 }
 
+figcaption {
+  color: gray;
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .dark-theme-toggle .feather {
   height: 22px;
   stroke-linecap: round;
