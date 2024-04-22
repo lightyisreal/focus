@@ -4,9 +4,27 @@
 
     <style>
         :root {
-            --accent-color: {{ .Site.Params.AccentColor | default "#FF4D4D" }};
+            --accent-color: {
+                    {
+                    .Site.Params.AccentColor | default "#FF4D4D"
+                }
+            }
+
+            ;
         }
     </style>
+
+    <!-- If a social icon by the name of "mastodon" is present, add the verification by getting its url -->
+    {{ $mastodon := "" }}
+    {{ range .Site.Params.SocialIcons }}
+    {{ if eq .name "mastodon" }}
+    {{ $mastodon = .url }}
+    {{ end }}
+    {{ end }}
+
+    {{ if $mastodon }}
+    <link rel="me" href="{{ $mastodon }}">
+    {{ end }}
 
     {{ $title := .Title | default .Site.Title }}
     {{ $description := .Description | default .Site.Params.Description }}
@@ -16,12 +34,12 @@
     {{ $keywords := union $siteKeywords $postKeywords }}
 
     {{ if .Site.Params.ShowSiteTitle }}
-            {{ if eq $title .Site.Title }}
-                {{ $title = .Site.Title | title }}
-            {{ else }}
-                {{ $title = printf "%s | %s" $title .Site.Title }}
-            {{ end }}
-        {{ end }}
+    {{ if eq $title .Site.Title }}
+    {{ $title = .Site.Title | title }}
+    {{ else }}
+    {{ $title = printf "%s | %s" $title .Site.Title }}
+    {{ end }}
+    {{ end }}
 
     <!-- SEO titles & descriptions -->
     <title>{{ $title }}</title>
@@ -42,7 +60,8 @@
     <meta property="twitter:url" content="{{ .Permalink }}">
     <meta name="twitter:image" content="{{ absURL $image }}">
 
-    {{ with .Site.Params.accentColor }}<meta name="theme-color" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.accentColor }}
+    <meta name="theme-color" content="{{ . }}">{{ end }}
 
     <!-- SEO canonicals: helps Google understand your site better when using marketing campaign tagging etc -->
     <link rel="canonical" href="{{ .Permalink }}" />
@@ -56,7 +75,8 @@
     {{ $cssDark := resources.Get "css/dark.css" | minify }}
     <link id="dark-theme" rel="stylesheet" href="{{ $cssDark.RelPermalink }}">
 
-    {{ $jsBundle := resources.Match "js/**.js" | resources.Concat "js/bundle.js" | minify | resources.Fingerprint "sha256" }}
+    {{ $jsBundle := resources.Match "js/**.js" | resources.Concat "js/bundle.js" | minify | resources.Fingerprint
+    "sha256" }}
     <script src="{{ $jsBundle.RelPermalink }}" integrity="{{ $jsBundle.Data.Integrity }}"></script>
 
     <!-- Option for user to inject custom html -->
