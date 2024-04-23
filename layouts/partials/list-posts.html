@@ -1,4 +1,4 @@
-<article class="post-title">
+<article class="post-title prevent-select">
     {{ $id := delimit (shuffle (seq 1 9)) "" }}
     {{ if isset .Params "image" }}
     {{ $imageUrl := path.Join .RelPermalink .Params.image }}
@@ -18,7 +18,7 @@
     </div>
     <script>
         // clicking post-info will redirect to post
-        document.getElementById("{{ $id }}").onclick = function() {
+        document.getElementById("{{ $id }}").onclick = function () {
             window.location.href = "{{ .Permalink }}";
         };
     </script>

@@ -15,6 +15,10 @@ html {
   background-color: var(--dark-secondary-color);
 }
 
+.home-about .banner-avatar img {
+  border-color: rgb(var(--dark-primary-color));
+}
+
 .post-title:hover {
   background-color: var(--dark-tertiary-color);
 }
@@ -37,7 +41,7 @@ a:hover .feather-moon {
 }
 
 .social-icons-list .social-icon,
-.social-icons-list .social-icon a:visited  {
+.social-icons-list .social-icon a:visited {
   fill: var(--dark-text-color);
 }
 
@@ -86,7 +90,7 @@ pre {
   background-color: var(--dark-secondary-color) !important;
 }
 
-:not(pre) > code {
+:not(pre)>code {
   background-color: var(--dark-tertiary-color) !important;
   color: var(--dark-text-color);
 }
@@ -95,7 +99,7 @@ pre {
   box-shadow: rgb(33, 38, 45) 0px -1px 0px 0px inset;
 }
 
-.arrow-logo { 
+.arrow-logo {
   background-color: var(--dark-secondary-color);
 }
 

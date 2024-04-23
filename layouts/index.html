@@ -1,11 +1,19 @@
 {{ define "main" }}
 <section class="home-about">
-    <div class="avatar">
-        {{ if isset .Site.Params "avatarurl" }}
-        <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}'
-            alt="{{ .Site.Params.AvatarAltText|default " avatar" }}" />
+    {{ if isset .Site.Params "bannerurl" }}
+    {{ $bannerUrl := .Scratch.Get "bannerImgSrc" }}
+    <div class="banner" style="background-image: url('{{ $bannerUrl }}');"></div>
+    <div class="banner-avatar">
         {{ end }}
+        <div class="avatar">
+            {{ if isset .Site.Params "avatarurl" }}
+            <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}'
+                alt="{{ .Site.Params.AvatarAltText|default " avatar" }}" />
+            {{ end }}
+        </div>
+        {{ if isset .Site.Params "bannerurl" }}
     </div>
+    {{ end }}
 
     <h1>{{ .Site.Title }}</h1>
     {{ if isset .Site.Params "description" }}
