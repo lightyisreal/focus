@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', ready, false);
 const THEME_PREF_STORAGE_KEY = "theme-preference";
 const THEME_TO_ICON_CLASS = {
     'dark': 'feather-moon',
-    'light':'feather-sun'
+    'light': 'feather-sun'
 };
 const THEME_TO_ICON_TEXT_CLASS = {
     'dark': 'Dark mode',
-    'light':'Light mode'
+    'light': 'Light mode'
 };
 let toggleIcon = '';
 let darkThemeCss = '';
@@ -17,14 +17,14 @@ const HEADING_TO_TOC_CLASS = {
     'H2': 'level-2',
     'H3': 'level-3',
     'H4': 'level-4'
-}
+};
 
 function ready() {
     feather.replace({ 'stroke-width': 1, width: 20, height: 20 });
     setThemeByUserPref();
 
     if (document.querySelector('main#content > .container') !== null &&
-            document.querySelector('main#content > .container').classList.contains('post')) {
+        document.querySelector('main#content > .container').classList.contains('post')) {
         if (document.getElementById('TableOfContents') !== null) {
             fixTocItemsIndent();
             createScrollSpy();
@@ -39,13 +39,13 @@ function ready() {
     SVGInjector(svgsToInject);
 
     document.getElementById('hamburger-menu-toggle').addEventListener('click', () => {
-        const hamburgerMenu = document.getElementsByClassName('nav-hamburger-list')[0]
+        const hamburgerMenu = document.getElementsByClassName('nav-hamburger-list')[0];
         if (hamburgerMenu.classList.contains('visibility-hidden')) {
             hamburgerMenu.classList.remove('visibility-hidden');
         } else {
             hamburgerMenu.classList.add('visibility-hidden');
         }
-    })
+    });
 }
 
 window.addEventListener('scroll', () => {
@@ -59,8 +59,8 @@ window.addEventListener('scroll', () => {
 
 function fixTocItemsIndent() {
     document.querySelectorAll('#TableOfContents a').forEach($tocItem => {
-      const itemId = $tocItem.getAttribute("href").substring(1)
-      $tocItem.classList.add(HEADING_TO_TOC_CLASS[document.getElementById(itemId).tagName]);
+        const itemId = $tocItem.getAttribute("href").substring(1);
+        $tocItem.classList.add(HEADING_TO_TOC_CLASS[document.getElementById(itemId).tagName]);
     });
 }
 
@@ -68,36 +68,36 @@ function createScrollSpy() {
     var elements = document.querySelectorAll('#toc a');
     document.addEventListener('scroll', function () {
         elements.forEach(function (element) {
-          const boundingRect = document.getElementById(element.getAttribute('href').substring(1)).getBoundingClientRect();
-          if (boundingRect.top <= 55 && boundingRect.bottom >= 0) {
-            elements.forEach(function (elem) {
-              elem.classList.remove('active');
-            });
-            element.classList.add('active');
-          }
+            const boundingRect = document.getElementById(element.getAttribute('href').substring(1)).getBoundingClientRect();
+            if (boundingRect.top <= 55 && boundingRect.bottom >= 0) {
+                elements.forEach(function (elem) {
+                    elem.classList.remove('active');
+                });
+                element.classList.add('active');
+            }
         });
     });
 }
 
 function toggleHeaderShadow(scrollY) {
     if (window.scrollY > scrollY) {
-        document.querySelectorAll('.header').forEach(function(item) {
-            item.classList.add('header-shadow')
-        })
+        document.querySelectorAll('.header').forEach(function (item) {
+            item.classList.add('header-shadow');
+        });
     } else {
-        document.querySelectorAll('.header').forEach(function(item) {
-            item.classList.remove('header-shadow')
-        })
+        document.querySelectorAll('.header').forEach(function (item) {
+            item.classList.remove('header-shadow');
+        });
     }
 }
 
 function setThemeByUserPref() {
     darkThemeCss = document.getElementById("dark-theme");
     const savedTheme = localStorage.getItem(THEME_PREF_STORAGE_KEY) ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark': 'light');
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const darkThemeToggles = document.querySelectorAll('.dark-theme-toggle');
     setTheme(savedTheme, darkThemeToggles);
-    darkThemeToggles.forEach(el => el.addEventListener('click', toggleTheme, {capture: true}))
+    darkThemeToggles.forEach(el => el.addEventListener('click', toggleTheme, { capture: true }));
 }
 
 function toggleTheme(event) {

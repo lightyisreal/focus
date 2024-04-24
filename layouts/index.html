@@ -15,7 +15,29 @@
     </div>
     {{ end }}
 
-    <h1>{{ .Site.Title }}</h1>
+    <h1>{{ .Site.Title }} </h1>
+    {{ if isset .Site.Params "pronoundb" }}
+    {{ $pronounMap := dict "he" "he/him" "she" "she/her" "they" "they/them" "it" "it/its" "any" "Any pronouns" "ask"
+    "Ask me my pronouns" "avoid" "Avoid pronouns, use my name" "other" "Other pronouns" }}
+    {{ $pronoundbURL := printf "https://pronoundb.org/api/v2/users/%s" .Site.Params.PronounDB }}
+    {{ $pronoundbJSON := getJSON $pronoundbURL }}
+    {{ $pronounSets := index $pronoundbJSON.sets.en }}
+    <div id="pronouns">
+        {{ if eq (len $pronounSets) 1 }}
+        {{ $pronouns := index $pronounSets 0 }}
+        {{ $pronoun := index $pronounMap $pronouns }}
+        {{ $pronoun }}
+        {{ else }}
+        <!-- Add them all separated by "/" without spaces between -->
+        {{ $pronouns := "" }}
+        {{ range $index, $element := $pronounSets }}
+        {{ if gt $index 0 }}{{ $pronouns = printf "%s/" $pronouns }}{{ end }}
+        {{ $pronouns = printf "%s%s" $pronouns $element }}
+        {{ end }}
+        {{ $pronouns }}
+        {{ end }}
+    </div>
+    {{ end }}
     {{ if isset .Site.Params "description" }}
     <h3>{{ .Site.Params.Description }}</h3>
     {{ end }}
