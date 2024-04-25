@@ -1,8 +1,9 @@
 <article class="post-title prevent-select">
     {{ $id := delimit (shuffle (seq 1 9)) "" }}
     {{ if isset .Params "image" }}
-    {{ $imageUrl := path.Join .RelPermalink .Params.image }}
-    {{ if or (strings.HasPrefix .Params.image "http") (strings.HasPrefix .Params.image "/") }}
+    {{ $image := (resources.Get .Params.image ) }}
+    {{ $imageUrl := ($image.Resize "800x q75").RelPermalink }}
+    {{ if strings.HasPrefix .Params.image "http" }}
     {{ $imageUrl = .Params.image }}
     {{ end }}
     <a href="{{ .Permalink }}" class="post-title-image" style="background-image: url('{{ $imageUrl }}');" />
