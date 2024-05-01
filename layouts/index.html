@@ -72,8 +72,13 @@
     <ul class="home-button-list">
         {{ range .Site.Params.HomepageButtons }}
         <li class="home-button">
+            {{ if and (isset . "newTab") .newTab }}
+            <a href="{{ .url }}" class="button" target="_blank" rel="noreferrer noopener">{{ .name }}</a>
+            {{ else }}
             <a href="{{ .url }}" class="button">{{ .name }}</a>
+            {{ end }}
         </li>
+        
         {{ end }}
     </ul>
 </section>
