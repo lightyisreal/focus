@@ -4,13 +4,7 @@
 
     <style>
         :root {
-            --accent-color: {
-                    {
-                    .Site.Params.AccentColor | default "#FF4D4D"
-                }
-            }
-
-            ;
+            --accent-color: {{ .Site.Params.AccentColor | default "#FF4D4D" }};
         }
     </style>
 
