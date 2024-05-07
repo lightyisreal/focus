@@ -1,4 +1,4 @@
-<article class="post-title prevent-select">
+<div class="post-title prevent-select">
     {{ $id := delimit (shuffle (seq 1 9)) "" }}
     {{ if isset .Params "image" }}
     {{ $image := (resources.Get .Params.image ) }}
@@ -23,4 +23,4 @@
             window.location.href = "{{ .Permalink }}";
         };
     </script>
-</article>
+</div>
