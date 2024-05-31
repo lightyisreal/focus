@@ -13,9 +13,9 @@
         <br>
         <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}</span>
         <br>
-        {{ with .Description }}
+        {{- with .Description | markdownify }}
         <div class="post-description">{{ . }}</div>
-        {{ end }}
+        {{ end -}}
     </div>
     <script>
         // clicking post-info will redirect to post

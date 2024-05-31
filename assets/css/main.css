@@ -618,7 +618,7 @@ table td {
   background-color: var(--light-secondary-color);
   border-radius: 5px;
   padding: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -635,7 +635,7 @@ table td {
 .post-title:hover {
   background-color: var(--light-tertiary-color);
   color: rgb(var(--light-primary-color));
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .post-info {
@@ -651,6 +651,7 @@ img.emoji {
 }
 
 .post-info .post-link {
+  color: rgb(var(--light-text-color));
   font-weight: 700;
   font-size: 20px;
 }
