@@ -642,6 +642,14 @@ table td {
   width: 70%;
 }
 
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+  display: inline-block;
+}
+
 .post-info .post-link {
   font-weight: 700;
   font-size: 20px;

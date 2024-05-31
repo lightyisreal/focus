@@ -24,17 +24,20 @@
     {{ $pronounSets := index $pronoundbJSON.sets.en }}
     <div id="pronouns">
         {{ if eq (len $pronounSets) 1 }}
-        {{ $pronouns := index $pronounSets 0 }}
-        {{ $pronoun := index $pronounMap $pronouns }}
-        {{ $pronoun }}
+            {{ $pronouns := index $pronounSets 0 }}
+            {{ $pronoun := index $pronounMap $pronouns }}
+            {{ $pronoun }}
         {{ else }}
-        <!-- Add them all separated by "/" without spaces between -->
-        {{ $pronouns := "" }}
-        {{ range $index, $element := $pronounSets }}
-        {{ if gt $index 0 }}{{ $pronouns = printf "%s/" $pronouns }}{{ end }}
-        {{ $pronouns = printf "%s%s" $pronouns $element }}
-        {{ end }}
-        {{ $pronouns }}
+            <!-- Add them all separated by "/" without spaces between -->
+            {{ $pronouns := "" }}
+            {{ range $index, $element := $pronounSets }}
+                {{ if gt $index 0 }}{{ $pronouns = printf "%s/" $pronouns }}{{ end }}
+                {{ $pronouns = printf "%s%s" $pronouns $element }}
+            {{ end }}
+            {{ if isset .Site.Params "flag" }}
+                {{ $pronouns = printf "%s | %s" $pronouns .Site.Params.Flag }}
+            {{ end }}
+            {{ $pronouns }}
         {{ end }}
     </div>
     {{ end }}

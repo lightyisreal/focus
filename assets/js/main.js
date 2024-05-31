@@ -20,6 +20,7 @@ const HEADING_TO_TOC_CLASS = {
 };
 
 function ready() {
+    twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
     feather.replace({ 'stroke-width': 1, width: 20, height: 20 });
     setThemeByUserPref();
 
