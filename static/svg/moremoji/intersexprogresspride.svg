@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="540" height="390" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+  <rect width="540" height="130" rx="66" fill="#ff000e"/>
+  <rect y="260" width="540" height="130" rx="66" fill="#880082"/>
+  <rect y="65" width="540" height="65" fill="#ff5000"/>
+  <rect y="130" width="540" height="65" fill="#fad220"/>
+  <rect y="195" width="540" height="65" fill="#138f3e"/>
+  <rect y="260" width="540" height="65" fill="#3558a0"/>
+  <!--
+  translate by -36 for each chevron:
+  <polygon points="144 390 0 390 0 0 144 0 322 195"/>
+  -->
+  <!--
+  intersect with:
+  <rect width="540" height="390" rx="66"/>
+  -->
+  <path d="m66 0c-36.564 0-66 29.436-66 66v258c0 36.564 29.436 66 66 66h78l178-195-178-195h-78z" fill="#292f33"/>
+  <path d="m66 0c-36.564 0-66 29.436-66 66v258c0 36.564 29.436 66 66 66h42l178-195-178-195h-42z" fill="#8a4b38"/>
+  <path d="m66 0c-36.564 0-66 29.436-66 66v258c0 36.564 29.436 66 66 66h6l178-195-178-195h-6z" fill="#5dadec"/>
+  <path d="m40.605 5.0449c-23.884 9.9125-40.605 33.403-40.605 60.955v258c0 27.552 16.722 51.043 40.605 60.955l173.39-189.96-173.39-189.96z" fill="#f4abba"/>
+  <path d="m18.449 20.213c-11.414 11.853-18.449 27.956-18.449 45.787v258c0 17.831 7.0357 33.934 18.449 45.787l159.55-174.79-159.55-174.79z" fill="#fff"/>
+  <path d="m3.9082 43.721c-2.486 6.9637-3.9082 14.441-3.9082 22.279v258c0 7.8387 1.4222 15.316 3.9082 22.279l138.09-151.28-138.09-151.28z" fill="#ffd900"/>
+  <circle cx="57" cy="195" r="40" fill="none" stroke="#7a00ab" stroke-width="10"/>
+<script xmlns=""/></svg>

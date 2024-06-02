@@ -21,6 +21,7 @@ const HEADING_TO_TOC_CLASS = {
 
 function ready() {
     twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+    parseMoremoji();
     feather.replace({ 'stroke-width': 1, width: 20, height: 20 });
     setThemeByUserPref();
 
@@ -47,6 +48,27 @@ function ready() {
             hamburgerMenu.classList.add('visibility-hidden');
         }
     });
+}
+
+function parseMoremoji() {
+    const text = document.body.innerHTML;
+    const emojiRegex = /&lt;moremoji:(.*?)&gt;/g;
+    const emojis = text.match(emojiRegex);
+    if (emojis) {
+        emojis.forEach(emoji => {
+            const emojiName = emoji.replace(/&lt;moremoji:|&gt;/g, '');
+            const emojiElement = document.createElement('img');
+            emojiElement.draggable = false;
+            emojiElement.alt = emojiName;
+            emojiElement.src = getMoremojiPath(emojiName);
+            emojiElement.classList.add('emoji');
+            document.body.innerHTML = document.body.innerHTML.replace(emoji, emojiElement.outerHTML);
+        });
+    }
+}
+
+function getMoremojiPath(name) {
+    return '/svg/moremoji/' + name + '.svg';
 }
 
 window.addEventListener('scroll', () => {

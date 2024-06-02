@@ -1,17 +1,18 @@
-name = "Gokarna"
-description = "Gokarna is an opinionated theme with a focus on minimalism and simplicity"
+name = "Focus"
+description = "Focus is a slightly tweaked fork of Gokarna"
 
 license = "GNU GPLv3"
-licenselink = "https://github.com/526avijitgupta/gokarna/blob/main/LICENSE"
+licenselink = "https://github.com/lightyisreal/focus/blob/main/LICENSE"
 
-homepage = "https://github.com/526avijitgupta/gokarna"
-demosite = "https://gokarna-hugo.netlify.app"
+homepage = "https://github.com/lightyisreal/focus"
+demosite = "https://lighty.tech"
 
 tags = ["blog", "minimal", "dark", "light", "responsive", "personal", "portfolio"]
 
 features = ["Blog", "Responsive", "Minimal", "Clean", "Simple", "SEO", "Bootstrap", "Fast", "Dark", "Light"]
 
 authors = [
+  {name = "Lighty", homepage = "https://lighty.tech"},
   {name = "Yash Mehrotra", homepage = "https://yashmehrotra.com"},
   {name = "Avijit Gupta", homepage = "https://526avijitgupta.github.io"}
 ]
