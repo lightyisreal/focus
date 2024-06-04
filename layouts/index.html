@@ -17,33 +17,8 @@
 
     <h1>{{ .Site.Title }} </h1>
     {{ if isset .Site.Params "pronouns" }}
-    {{ $pronounMap := dict "he" "he/him" "she" "she/her" "they" "they/them" "it" "it/its" "any" "Any pronouns" "ask"
-    "Ask me my pronouns" "avoid" "Avoid pronouns, use my name" "other" "Other pronouns" }}
-
-    {{ $pronouns := .Site.Params.Pronouns }}
-    {{ if strings.HasPrefix $pronouns "pronoundb:" }}
-        {{ $pronouns = strings.Replace $pronouns "pronoundb:" "" }}
-        {{ $pronoundbURL := printf "https://pronoundb.org/api/v2/users/%s" $pronouns }}
-        {{ $pronoundbJSON := getJSON $pronoundbURL }}
-        {{ $pronounSets := index $pronoundbJSON.sets.en }}
-        {{ if eq (len $pronounSets) 1 }}
-            {{ $pronouns = index $pronounSets 0 }}
-            {{ $pronoun := index $pronounMap $pronouns }}
-            {{ $pronoun }}
-        {{ else }}
-            <!-- Add them all separated by "/" without spaces between -->
-            {{ $pronouns = "" }}
-            {{ range $index, $element := $pronounSets }}
-                {{ if gt $index 0 }}{{ $pronouns = printf "%s/" $pronouns }}{{ end }}
-                {{ $pronouns = printf "%s%s" $pronouns $element }}
-            {{ end }}
-        {{ end }}
-    {{ end }}
-    {{ if isset .Site.Params "flag" }}
-        {{ $pronouns = printf "%s | %s" $pronouns .Site.Params.Flag }}
-    {{ end }}
     <div id="pronouns">
-        {{ $pronouns }}
+        {{ .Scratch.Get "pronouns" }}
     </div>
     {{ end }}
     {{ if isset .Site.Params "description" }}
