@@ -39,6 +39,40 @@
             {{- end -}}
         {{- end -}}
     {{- end -}}
+    {{- if hasPrefix $pronouns "pronouns.page:" -}}
+        {{- $pronouns = replace $pronouns "pronouns.page:" "" -}}
+        {{- $username := $pronouns -}}
+        {{- $pronounsPageURL := printf "https://en.pronouns.page/api/profile/get/%s?version=2" $pronouns -}}
+        {{- $pronounsPageJSON := dict -}}
+        {{- with resources.GetRemote $pronounsPageURL -}}
+            {{- $pronounsPageJSON = . | unmarshal -}}
+        {{- else -}}
+            {{- errorf "Unable to fetch the Pronouns.page API" -}}
+        {{- end -}}
+
+        {{- $pronounSets := index $pronounsPageJSON.profiles.en.pronouns -}}
+        {{- if eq (len $pronounSets) 1 -}}
+            {{- $pronouns = index $pronounSets 0 -}}
+            {{- $pronouns = $pronouns.value -}}
+        {{- else -}}
+            <!-- Add them all separated by "/" without spaces between -->
+            {{- $pronouns = "" -}}
+            {{- range $index, $element := $pronounSets -}}
+                {{- $pronoun := "" -}}
+                {{- $pronounsPagePronoun := printf "https://en.pronouns.page/api/pronouns/%s" $element.value -}}
+                {{- with resources.GetRemote $pronounsPagePronoun -}}
+                    {{- $data := . | unmarshal -}}
+                    {{- $pronoun = $data.canonicalName -}}
+                {{- else -}}
+                    {{- errorf "Unable to fetch the Pronouns.page API" -}}
+                {{- end -}}
+                {{- if gt $index 0 -}}{{- $pronouns = printf "%s/" $pronouns -}}{{ end -}}
+                {{- $pronouns = printf "%s%s" $pronouns $pronoun }}
+            {{- end -}}
+        {{- end -}}
+        {{- $pronounsPageLink := printf "https://en.pronouns.page/@%s" $username -}}
+        {{- $pronouns = printf "<a href=\"%s\">%s</a>" $pronounsPageLink $pronouns -}}
+    {{- end -}}
     {{- if isset site.Params "flag" -}}
         {{- $pronouns = printf "%s | %s" $pronouns .Site.Params.Flag -}}
     {{- end -}}

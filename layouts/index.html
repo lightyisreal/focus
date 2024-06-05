@@ -18,7 +18,7 @@
     <h1>{{ .Site.Title }} </h1>
     {{ if isset .Site.Params "pronouns" }}
     <div id="pronouns">
-        {{ .Scratch.Get "pronouns" }}
+        {{ .Scratch.Get "pronouns" | safeHTML }}
     </div>
     {{ end }}
     {{ if isset .Site.Params "description" }}
