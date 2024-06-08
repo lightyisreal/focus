@@ -74,6 +74,7 @@
     <h2>{{ i18n (.Site.Params.ShowPostsOnHomePage | humanize) }} Posts</h2>
 
     {{ $posts := where .Site.Pages "Params.type" "post" }}
+    {{ $posts = where $posts "Params.visible" "!=" false }}
 
     {{ if eq .Site.Params.ShowPostsOnHomePage "popular" }}
     {{ range $posts.ByWeight | first 4 }}
