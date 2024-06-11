@@ -2,12 +2,14 @@
 <section class="home-about">
     {{ if isset .Site.Params "bannerurl" }}
     {{ $bannerUrl := .Scratch.Get "bannerImgSrc" }}
+    {{ $bannerUrl = ((resources.Get $bannerUrl).Resize "1600x").RelPermalink }}
     <div class="banner" style="background-image: url('{{ $bannerUrl }}');"></div>
     <div class="banner-avatar">
         {{ end }}
         <div class="avatar">
             {{ if isset .Site.Params "avatarurl" }}
-            <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ .Scratch.Get "avatarImgSrc" }}'
+            {{ $avatarUrl := ((resources.Get (.Scratch.Get "avatarImgSrc")).Resize "256x").RelPermalink }}
+            <img class={{ .Site.Params.AvatarSize | default "size-m" }} src='{{ $avatarUrl }}'
                 alt="{{ .Site.Params.AvatarAltText | default " avatar" }}">
             {{ end }}
         </div>
