@@ -41,10 +41,12 @@ strong {
 
 a {
   color: inherit;
+  transition: color 0.1s ease;
 }
 
 /* This is set in partials/head.html and is populated via config */
 a:hover {
+  transition: color 0.1s ease;
   color: var(--accent-color);
   fill: var(--accent-color);
 }
@@ -306,6 +308,7 @@ figcaption {
 }
 
 .post-tags .post-tag {
+  transition: background-color 0.2s ease;
   border: 1.5px solid;
   border-radius: 4px;
   box-sizing: border-box;
@@ -315,6 +318,7 @@ figcaption {
 }
 
 .post-tags .post-tag:hover {
+  transition: background-color 0.2s ease;
   background-color: var(--light-text-color);
   color: rgb(var(--light-primary-color));
 }
