@@ -19,7 +19,9 @@
         {{ end }}
         <div class="post-image">
             {{ if (isset .Params "image_description") }}
-            <img src="{{ $imageUrl }}" alt="{{ .Params.image_description }}">
+            <a href="{{ $image }}" target="_blank" rel="noreferrer noopener">
+                <img src="{{ $imageUrl }}" alt="{{ .Params.image_description }}">
+            </a>
             <div class="post-image-description">{{- with .Params.image_description | markdownify }}{{ . }}{{ end -}}
             </div>
             {{ else }}

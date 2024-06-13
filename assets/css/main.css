@@ -593,6 +593,13 @@ table td {
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
+  transition: filter 0.2s ease;
+}
+
+.post-content img:hover,
+.post-image img:hover {
+  transition: filter 0.2s ease;
+  filter: brightness(80%);
 }
 
 .post-image-description {
