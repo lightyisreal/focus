@@ -2,24 +2,28 @@
 {{- $alt := .Get "alt" -}}
 {{- $width := .Get "width" -}}
 {{- $height := .Get "height" -}}
-{{- $class := .Get "class" -}}
 {{- $link := .Get "link" -}}
 
+<div class="post-image">
+  {{- $image := resources.Get $src -}}
+  {{- $resizedImg := $image -}}
+  {{- if and $width $height -}}
+  {{- $resizedImg := $image.Resize $width $height -}}
+  {{- else if $width -}}
+  {{- $resizedImg := $image.Resize $width -}}
+  {{- else if $height -}}
+  {{- $resizedImg := $image.Resize nil $height -}}
+  {{- end -}}
+  {{- if and (ge $image.Width 1920) (ge $image.Height 1080) -}}
+  {{- $resizedImg = $resizedImg.Resize "1600x900" -}}
+  {{- end -}}
+  {{ if not (.Get "link") }}
+    {{ $link = $resizedImg.RelPermalink }}
+  {{ end }}
 <a href="{{ $link }}">
-  <figure>
-    {{- $image := resources.Get $src -}}
-    {{- $resizedImg := $image -}}
-    {{- if and $width $height -}}
-    {{- $resizedImg := $image.Resize $width $height -}}
-    {{- else if $width -}}
-    {{- $resizedImg := $image.Resize $width -}}
-    {{- else if $height -}}
-    {{- $resizedImg := $image.Resize nil $height -}}
-    {{- end -}}
-    {{- if and (ge $image.Width 1920) (ge $image.Height 1080) -}}
-    {{- $resizedImg = $resizedImg.Resize "1600x900" -}}
-    {{- end -}}
-    <img src="{{ $resizedImg.RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}">
-    <figcaption>{{ .Get "caption" }}</figcaption>
-  </figure>
+    <img src="{{ $resizedImg.RelPermalink }}" alt="{{ $alt }}">
 </a>
+{{ if .Get "alt" }}
+<div class="post-image-description">{{ .Get "alt" }}</div>
+{{ end }}
+</div>

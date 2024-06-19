@@ -301,6 +301,14 @@ figcaption {
   box-shadow: rgb(220, 220, 220) 0px 1px 5px;
 }
 
+.page-header {
+  text-align: center;
+}
+
+.post-date {
+  text-align: inherit;
+}
+
 /* TAGS */
 .post-tags {
   list-style-type: none;

@@ -1,7 +1,28 @@
 <div class="post container">
 
-    <div class="post-header-section">
+    <div class="post-header-section page-header">
         <h1>{{ .Title }}</h1>
+        {{ if .Lastmod }}
+        <p class="post-date">Last updated: {{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Lastmod }}</p>
+        {{ end }}
+        {{ if (isset .Params "image") }}
+        {{ $image := resources.Get .Params.image }}
+        {{ $imageUrl := ($image.Resize "1600x").RelPermalink }}
+        {{ if strings.HasPrefix .Params.image "http" }}
+        {{ $imageUrl = .Params.image }}
+        {{ end }}
+        <div class="post-image">
+            {{ if (isset .Params "image_description") }}
+            <a href="{{ $image }}" target="_blank" rel="noreferrer noopener">
+                <img src="{{ $imageUrl }}" alt="{{ .Params.image_description }}">
+            </a>
+            <div class="post-image-description">{{- with .Params.image_description | markdownify }}{{ . }}{{ end -}}
+            </div>
+            {{ else }}
+            <img src="{{ $imageUrl }}">
+            {{ end }}
+        </div>
+        {{ end }}
     </div>
 
     <div class="post-content">
