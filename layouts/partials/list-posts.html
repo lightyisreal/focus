@@ -11,7 +11,8 @@
     <div class="post-info" id="{{ $id }}">
         <a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a>
         <br>
-        <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}</span>
+        <span class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}
+            {{ if lt .Date .Lastmod }} | Updated {{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Lastmod }}{{ end }}</span>
         <br>
         {{- with .Description | markdownify }}
         <div class="post-description">{{ . }}</div>

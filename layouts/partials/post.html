@@ -3,7 +3,7 @@
         <h1>{{ .Title }}</h1>
         <small role="doc-subtitle">{{- with .Description | markdownify }}{{ . }}{{ end -}}</small>
         <p class="post-date">{{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Date}}
-            {{ if lt .Date .Lastmod }} | Updated {{ dateFormat .Site.Params.dateFormat .Lastmod }}{{ end }}
+            {{ if lt .Date .Lastmod }} | Updated {{ dateFormat (or .Site.Params.dateFormat "January 2, 2006") .Lastmod }}{{ end }}
         </p>
 
         <ul class="post-tags">
