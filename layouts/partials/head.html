@@ -5,6 +5,14 @@
     <style>
         :root {
             --accent-color: {{ .Site.Params.AccentColor | default "#FF4D4D" }};
+            --light-primary-color: {{ .Site.Params.Theming.Light.Primary | default "255, 255, 255" }};
+            --light-secondary-color: {{ .Site.Params.Theming.Light.Secondary | default "#dddddd" }};
+            --light-tertiary-color: {{ .Site.Params.Theming.Light.Tertiary | default "#272822" }};
+            --light-text-color: {{ .Site.Params.Theming.Light.Text | default "black" }};
+            --dark-primary-color: {{ .Site.Params.Theming.Dark.Primary | default "34, 39, 46" }};
+            --dark-secondary-color: {{ .Site.Params.Theming.Dark.Secondary | default "#2d333b" }};
+            --dark-tertiary-color: {{ .Site.Params.Theming.Dark.Tertiary | default "#646464" }};
+            --dark-text-color: {{ .Site.Params.Theming.Dark.Text | default "white" }};
         }
     </style>
 
@@ -55,7 +63,8 @@
     <meta name="twitter:image" content="{{ absURL $image }}">
 
     {{ with .Site.Params.accentColor }}
-    <meta name="theme-color" content="{{ . }}">{{ end }}
+    <meta name="theme-color" content="{{ . }}">
+    {{ end }}
 
     <!-- SEO canonicals: helps Google understand your site better when using marketing campaign tagging etc -->
     <link rel="canonical" href="{{ .Permalink }}">
