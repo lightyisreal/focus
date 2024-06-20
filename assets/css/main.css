@@ -36,13 +36,14 @@ strong {
 
 a {
   color: inherit;
-  transition: color 0.1s ease;
+  transition: 0.1s ease;
 }
 
 /* This is set in partials/head.html and is populated via config */
 a:hover {
-  transition: color 0.1s ease;
+  transition: 0.1s ease;
   color: var(--accent-color);
+  filter: brightness(80%);
   fill: var(--accent-color);
 }
 
