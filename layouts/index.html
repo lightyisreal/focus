@@ -56,14 +56,23 @@
 <section class="buttons">
     <ul class="button-list">
         {{ range .Site.Params.HomepageButtons }}
-        <li class="button">
-            {{ if and (isset . "newTab") .newTab }}
-            <a href="{{ .url }}" target="_blank" rel="noreferrer noopener">{{ .name }}</a>
-            {{ else }}
-            <a href="{{ .url }}">{{ .name }}</a>
-            {{ end }}
+        {{ $id := delimit (shuffle (seq 1 9)) "" }}
+        <li class="button" id="{{ $id }}">
+            {{ .name }}
         </li>
-
+        {{ if and (isset . "newTab") .newTab }}
+        <script>
+            document.getElementById("{{ $id }}").onclick = function () {
+                window.open("{{ .url }}", "_blank").focus();
+            };
+        </script>
+        {{ else }}
+        <script>
+            document.getElementById("{{ $id }}").onclick = function () {
+                window.location.href = "{{ .url }}";
+            };
+        </script>
+        {{ end }}
         {{ end }}
     </ul>
 </section>

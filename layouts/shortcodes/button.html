@@ -1,6 +1,18 @@
 {{- $name := .Get "name" -}}
 {{- $link := .Get "link" -}}
+{{- $newTab := .Get "newTab" -}}
 
-<li class="button">
-    <a href="{{ $link }}">{{ $name }}</a>
+{{ $id := delimit (shuffle (seq 1 9)) "" }}
+
+<li class="button" id="{{ $id }}">
+    {{ $name }}
 </li>
+<script>
+    document.getElementById("{{ $id }}").onclick = function () {
+        if (Boolean("{{ $newTab }}")) {
+            window.open("{{ $link }}", "_blank").focus();
+            return;
+        }
+        window.location.href = "{{ $link }}";
+    };
+</script>
