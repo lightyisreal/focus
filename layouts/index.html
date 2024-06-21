@@ -53,14 +53,14 @@
 
 {{ if isset .Site.Params "homepagebuttons" }}
 
-<section class="home-buttons">
-    <ul class="home-button-list">
+<section class="buttons">
+    <ul class="button-list">
         {{ range .Site.Params.HomepageButtons }}
-        <li class="home-button">
+        <li class="button">
             {{ if and (isset . "newTab") .newTab }}
-            <a href="{{ .url }}" class="button" target="_blank" rel="noreferrer noopener">{{ .name }}</a>
+            <a href="{{ .url }}" target="_blank" rel="noreferrer noopener">{{ .name }}</a>
             {{ else }}
-            <a href="{{ .url }}" class="button">{{ .name }}</a>
+            <a href="{{ .url }}">{{ .name }}</a>
             {{ end }}
         </li>
 

@@ -12,12 +12,12 @@ html {
   border-color: rgb(var(--dark-primary-color));
 }
 
-.home-button {
+.button {
   background-color: var(--dark-secondary-color);
   color: var(--dark-text-color);
 }
 
-.home-button:hover {
+.button:hover {
   background-color: var(--dark-tertiary-color);
 }
 

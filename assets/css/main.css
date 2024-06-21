@@ -500,12 +500,12 @@ table td {
   margin: 0 auto;
 }
 
-.home-buttons {
+.buttons {
   display: flex;
   justify-content: center;
 }
 
-.home-button-list {
+.button-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -513,7 +513,7 @@ table td {
   padding: 0;
 }
 
-.home-button {
+.button {
   background-color: var(--light-secondary-color);
   color: var(--light-text-color);
   border-radius: 20px;
@@ -525,15 +525,19 @@ table td {
   transition: background-color 0.2s ease;
 }
 
-.home-button:hover {
+.button:hover {
   background-color: var(--light-tertiary-color);
   color: rgb(var(--light-primary-color));
   transition: background-color 0.2s ease;
 }
 
-.home-button>a {
+.button>a {
   color: inherit;
   text-decoration: none;
+}
+
+.button>a:hover {
+  filter: none;
 }
 
 .home-posts {
@@ -667,6 +671,7 @@ img.emoji {
 
 .post-info .post-link {
   color: rgb(var(--light-text-color));
+  filter: none;
   font-weight: 700;
   font-size: 20px;
 }
