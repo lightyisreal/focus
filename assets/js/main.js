@@ -52,11 +52,11 @@ function ready() {
 
 function parseMoremoji() {
     const text = document.body.innerHTML;
-    const emojiRegex = /&lt;moremoji:(.*?)&gt;/g;
+    const emojiRegex = /:moremoji:(.*?):/g;
     const emojis = text.match(emojiRegex);
     if (emojis) {
         emojis.forEach(emoji => {
-            const emojiName = emoji.replace(/&lt;moremoji:|&gt;/g, '');
+            const emojiName = emoji.replace(/:moremoji:|:/g, '');
             const emojiElement = document.createElement('img');
             emojiElement.draggable = false;
             emojiElement.alt = emojiName;
