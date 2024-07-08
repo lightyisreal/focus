@@ -19,7 +19,8 @@
     <!-- If a social icon by the name of "mastodon" is present, add the verification by getting its url -->
     {{ $mastodon := "" }}
     {{ range .Site.Params.SocialIcons }}
-        {{ if eq .name "mastodon" }}
+        {{ $lowerName := lower .name }}
+        {{ if eq $lowerName "mastodon" }}
             {{ $mastodon = .url }}
         {{ end }}
     {{ end }}

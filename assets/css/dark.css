@@ -55,8 +55,20 @@ a:hover {
   fill: var(--dark-text-color);
 }
 
-.social-icons-list .social-icon a:hover {
-  fill: var(--accent-color);
+.social-icon a {
+  text-decoration: none;
+  color: inherit;
+  filter: brightness(40%);
+}
+
+.social-icon a svg {
+  fill: inherit;
+  filter: brightness(40%);
+}
+
+.social-icon a svg:hover {
+  filter: none;
+  fill: inherit;
 }
 
 .post-tags .post-tag:hover {
