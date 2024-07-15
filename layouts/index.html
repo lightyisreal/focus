@@ -35,10 +35,9 @@
 <div class="social-icons">
     <ul class="social-icons-list">
         {{ range .Site.Params.SocialIcons }}
-        <li class="social-icon" {{ if .color }}style="background-color: {{ .color }}; color: {{ .color }}"{{ end }}>
+        <li class="social-icon">
             <a href="{{ .url }}" {{ if .rel }}rel="{{ .rel }}" {{ end }} aria-label="Learn more on {{ .name }}">
                 <img class="svg-inject" src="/svg/icons/{{ .name }}.svg" alt="">
-                {{ .name }}
             </a>
         </li>
         {{ end }}

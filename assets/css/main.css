@@ -475,47 +475,23 @@ table td {
 }
 
 .social-icons .social-icons-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: inline-block;
   list-style-type: none;
   padding: 0;
+  text-align: center;
 }
 
 .social-icons-list .social-icon {
-  background-color: var(--light-secondary-color);
-  color: var(--light-text-color);
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  margin: 10px;
-  padding: 10px;
-  font-weight: bold;
-  transition: filter 0.2s ease;
+  box-sizing: border-box;
+  display: inline-block;
+  fill: var(--light-text-color);
+  height: 24px;
+  margin: 0 6px;
+  width: 24px;
 }
 
-.social-icon a {
-  text-decoration: none;
-  color: inherit;
-  filter: brightness(40%);
-}
-
-.social-icon a svg:hover {
-  filter: none;
-  color: inherit;
-}
-
-.social-icons-list .social-icon:hover {
-  filter: brightness(80%);
-  transition: filter 0.2s ease;
-}
-
-.social-icon a svg {
-  color: inherit;
-  height: 20px;
-  margin: -3px auto;
-  stroke-width: 2;
-  width: 20px;
+.social-icon a svg path {
+  transition: fill 0.15s ease;
 }
 
 .markdown-content {
