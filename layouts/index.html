@@ -37,7 +37,7 @@
         {{ range .Site.Params.SocialIcons }}
         <li class="social-icon">
             <a href="{{ .url }}" {{ if .rel }}rel="{{ .rel }}" {{ end }} aria-label="Learn more on {{ .name }}">
-                <img class="svg-inject" src="/svg/icons/{{ .name }}.svg" alt="">
+                <img class="svg-inject" src="/svg/icons/{{ lower .name }}.svg" alt="">
             </a>
         </li>
         {{ end }}
