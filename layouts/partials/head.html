@@ -31,7 +31,6 @@
     {{ $title := .Title | default .Site.Title }}
     {{ $description := .Description | default .Site.Params.Description }}
     {{ $image := .Params.image | default (.Scratch.Get "avatarImgSrc") }}
-    {{ .Scratch.Set "embedImage" $image }}
     {{ $siteKeywords := .Site.Params.MetaKeywords | default (slice) }}
     {{ $postKeywords := .Params.tags | default (slice) }}
     {{ $keywords := union $siteKeywords $postKeywords }}
@@ -53,15 +52,15 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $description }}">
-    <meta property="og:image" content="{{ absURL (.Scratch.Get "embedImage") }}">
-    <meta property="og:image:secure_url" content="{{ absURL (.Scratch.Get "embedImage") }}">
+    <meta property="og:image" content="{{ absURL $image }}">
+    <meta property="og:image:secure_url" content="{{ absURL $image }}">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ $title }}">
     <meta name="twitter:description" content="{{ $description }}">
     <meta property="twitter:domain" content="{{ .Permalink }}">
     <meta property="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:image" content="{{ absURL (.Scratch.Get "embedImage") }}">
+    <meta name="twitter:image" content="{{ absURL $image }}">
 
     {{ with .Site.Params.accentColor }}
     <meta name="theme-color" content="{{ . }}">
