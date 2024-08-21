@@ -28,6 +28,7 @@
             <img src="{{ $imageUrl }}">
             {{ end }}
         </div>
+        {{ .Scratch.Set "embedImage" $imageUrl }}
         {{ end }}
     </div>
 
