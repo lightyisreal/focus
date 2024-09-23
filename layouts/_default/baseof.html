@@ -66,6 +66,21 @@
                 {{- else -}}
                     {{- errorf "Unable to fetch the Pronouns.page API" -}}
                 {{- end -}}
+                {{- if eq ($element.value) "any" -}}
+                    {{- $pronoun = "any" -}}
+                {{- end -}}
+                {{- if eq ($element.value) "all" -}}
+                    {{- $pronoun = "all" -}}
+                {{- end -}}
+                {{- if eq ($element.value) "ask" -}}
+                    {{- $pronoun = "ask" -}}
+                {{- end -}}
+                {{- if eq ($element.value) "avoid" -}}
+                    {{- $pronoun = "avoid" -}}
+                {{- end -}}
+                {{- if eq ($element.value) "other" -}}
+                    {{- $pronoun = "other" -}}
+                {{- end -}}
                 {{- if gt $index 0 -}}{{- $pronouns = printf "%s/" $pronouns -}}{{ end -}}
                 {{- $pronouns = printf "%s%s" $pronouns $pronoun }}
             {{- end -}}
