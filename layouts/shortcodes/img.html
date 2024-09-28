@@ -15,7 +15,7 @@
   {{- $resizedImg := $image.Resize nil $height -}}
   {{- end -}}
   {{- if and (ge $image.Width 1920) (ge $image.Height 1080) -}}
-  {{- $resizedImg = $resizedImg.Resize "1600x900" -}}
+  {{- $resizedImg = $resizedImg.Fit "1600x900" -}}
   {{- end -}}
   {{ if not (.Get "link") }}
     {{ $link = $resizedImg.RelPermalink }}
