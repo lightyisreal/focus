@@ -19,13 +19,19 @@
     <!-- If a social icon by the name of "mastodon" is present, add the verification by getting its url -->
     {{ $mastodon := "" }}
     {{ range .Site.Params.SocialIcons }}
-        {{ if eq .name "mastodon" }}
+        {{ $lowerName := lower .name }}
+        {{ if eq $lowerName "mastodon" }}
             {{ $mastodon = .url }}
         {{ end }}
     {{ end }}
 
-    {{ if $mastodon }}
+    {{ if not (eq $mastodon "") }}
         <link rel="me" href="{{ $mastodon }}">
+        {{ $mastodonInstance := index (split $mastodon "/") 2 }}
+        {{ $mastodonInstance = replace $mastodonInstance "https://" "" }}
+        {{ $mastodonInstance = replace $mastodonInstance "http://" "" }}
+        {{ $mastodonUsername := index (split $mastodon "/") 3 }}
+        <meta name="fediverse:creator" content="{{ $mastodonUsername }}@{{ $mastodonInstance }}" />
     {{ end }}
 
     {{ $title := .Title | default .Site.Title }}
