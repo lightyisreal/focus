@@ -49,6 +49,11 @@
         {{ end }}
     {{ end }}
 
+    <!-- RSS output -->
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+    {{ end }}
+
     <!-- SEO titles & descriptions -->
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
