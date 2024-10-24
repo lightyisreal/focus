@@ -4,22 +4,32 @@
 }
 
 @font-face {
-  font-family: Poppins;
-  font-weight: 400;
-  src: url("/fonts/Poppins-Regular.ttf");
+  font-family: Ubuntu Sans;
+  src: url("/fonts/UbuntuSans-Variable.ttf");
 }
 
 @font-face {
-  font-family: Poppins;
-  font-weight: 700;
-  src: url("/fonts/Poppins-Bold.ttf");
+  font-family: Ubuntu Sans;
+  font-style: italic;
+  src: url("/fonts/UbuntuSans-Italic-Variable.ttf");
+}
+
+@font-face {
+  font-family: Ubuntu Sans Mono;
+  src: url("/fonts/UbuntuSansMono-Variable.ttf");
+}
+
+@font-face {
+  font-family: Ubuntu Sans Mono;
+  font-style: italic;
+  src: url("/fonts/UbuntuSansMono-Italic-Variable.ttf");
 }
 
 html {
   background-color: rgb(var(--light-primary-color));
   color: var(--light-text-color);
-  font-family: "Poppins", sans-serif;
-  font-size: 17px;
+  font-family: "Ubuntu Sans", sans-serif;
+  font-size: 18px;
   min-height: 100%;
   position: relative;
   scroll-behavior: smooth;
@@ -352,6 +362,7 @@ code {
   box-decoration-break: clone;
   word-wrap: break-word;
   font-size: 0.8em;
+  font-family: "Ubuntu Sans Mono";
 }
 
 :not(pre)>code {
