@@ -4,32 +4,52 @@
 }
 
 @font-face {
-  font-family: Ubuntu Sans;
-  src: url("/fonts/UbuntuSans-Variable.ttf");
+  font-family: 'Atkinson Hyperlegible';
+  src: local('Atkinson Hyperlegible Bold'), local('AtkinsonHyperlegible-Bold'),
+    url('/fonts/Atkinson-Hyperlegible-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Ubuntu Sans;
+  font-family: 'Atkinson Hyperlegible';
+  src: local('Atkinson Hyperlegible Bold Italic'), local('AtkinsonHyperlegible-BoldItalic'),
+    url('/fonts/Atkinson-Hyperlegible-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
   font-style: italic;
-  src: url("/fonts/UbuntuSans-Italic-Variable.ttf");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Ubuntu Sans Mono;
-  src: url("/fonts/UbuntuSansMono-Variable.ttf");
-}
-
-@font-face {
-  font-family: Ubuntu Sans Mono;
+  font-family: 'Atkinson Hyperlegible';
+  src: local('Atkinson Hyperlegible Italic'), local('AtkinsonHyperlegible-Italic'),
+    url('/fonts/Atkinson-Hyperlegible-Italic.woff2') format('woff2');
+  font-weight: normal;
   font-style: italic;
-  src: url("/fonts/UbuntuSansMono-Italic-Variable.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: local('Atkinson Hyperlegible Regular'), local('AtkinsonHyperlegible-Regular'),
+    url('/fonts/Atkinson-Hyperlegible-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Fira Code;
+  src: url("/fonts/FiraCode-VF.woff2");
 }
 
 html {
   background-color: rgb(var(--light-primary-color));
   color: var(--light-text-color);
-  font-family: "Ubuntu Sans", sans-serif;
-  font-size: 18px;
+  font-family: "Atkinson Hyperlegible",
+    sans-serif;
+  font-size: 1.25rem;
   min-height: 100%;
   position: relative;
   scroll-behavior: smooth;
@@ -362,7 +382,7 @@ code {
   box-decoration-break: clone;
   word-wrap: break-word;
   font-size: 0.8em;
-  font-family: "Ubuntu Sans Mono";
+  font-family: "Fira Code";
 }
 
 :not(pre)>code {
